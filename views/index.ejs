@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Books Directory</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#search">Search</a></li>
+                    <li><a href="#authors">Authors</a></li>
+                    <li><a href="#genres">Genres</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="search" class="container">
+        <h2>Search for Books</h2>
+        <form action="/books/search" method="GET">
+            <input type="text" name="query" placeholder="Search by title, author, genre..." required>
+            <button type="submit">Search</button>
+        </form>
+    </section>
+
+    <section id="books" class="container">
+        <h2>Book Collection</h2>
+        <div class="book-list">
+            <% books.forEach(book => { %>
+                <div class="book-item">
+                    <h3><%= book.title %></h3>
+                    <p><strong>Author:</strong> <%= book.author %></p>
+                    <p><strong>Genre:</strong> <%= book.genre %></p>
+                    <p><strong>Published:</strong> <%= book.publishedYear %></p>
+                    <p><%= book.description %></p>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+    
+    <section id="addBookForm" class="container">
+     <!-- Add Book Form -->
+     <h2>Add a New Book</h2>
+     <form id="addBookForm">
+         <input type="text" id="title" placeholder="Title" required>
+         <input type="text" id="author" placeholder="Author" required>
+         <input type="text" id="genre" placeholder="Genre" required>
+         <input type="number" id="publishedYear" placeholder="Published Year" required>
+         <textarea id="description" placeholder="Description" required></textarea>
+         <button type="submit">Add Book</button>
+     </form>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Books Directory. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/js/main.js"></script>
+</body>
+</html>
